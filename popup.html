@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Quick Fix</title>
+    <style>
+      :root {
+        --bg: #1e1e1e;
+        --surface: #252526;
+        --border: #3c3c3c;
+        --text: #cccccc;
+        --text-dim: #858585;
+        --accent: #3794ff;
+        --accent-hover: #4aa3ff;
+        --danger: #f48771;
+        --success: #89d185;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 220px;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        font-size: 13px;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      header {
+        padding: 10px 12px 8px;
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .sub {
+        margin-top: 2px;
+        font-size: 11px;
+        color: var(--text-dim);
+      }
+
+      main {
+        padding: 10px 12px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      button {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: center;
+        transition: background 0.12s, border-color 0.12s;
+      }
+
+      button:hover:not(:disabled) {
+        background: #2d2d30;
+        border-color: #505050;
+      }
+
+      button:active:not(:disabled) {
+        background: #333;
+      }
+
+      button.primary {
+        border-color: var(--accent);
+        background: rgba(55, 148, 255, 0.12);
+        color: var(--accent);
+      }
+
+      button.primary:hover:not(:disabled) {
+        background: rgba(55, 148, 255, 0.22);
+        border-color: var(--accent-hover);
+      }
+
+      button.danger-outline {
+        border-color: rgba(244, 135, 113, 0.45);
+        color: var(--danger);
+      }
+
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+
+      #status {
+        min-height: 18px;
+        margin-top: 4px;
+        font-size: 11px;
+        line-height: 1.35;
+        word-break: break-word;
+      }
+
+      #status.ok {
+        color: var(--success);
+      }
+
+      #status.err {
+        color: var(--danger);
+      }
+
+      #status.muted {
+        color: var(--text-dim);
+      }
+
+      .shortcut {
+        font-size: 10px;
+        color: var(--text-dim);
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Dev Quick Fix</h1>
+      <div class="sub">Frontend debugging utilities</div>
+    </header>
+    <main>
+      <button type="button" id="btn-clear" class="danger-outline">
+        Clear All Storage
+      </button>
+      <button type="button" id="btn-overlays">Remove Overlays</button>
+      <button type="button" id="btn-reload">Hard Reload</button>
+      <button type="button" id="btn-fix" class="primary">Fix Page</button>
+      <p class="shortcut">Shortcut: Fix Page (Ctrl+Shift+Y / ⌘⇧Y)</p>
+      <div id="status" class="muted" aria-live="polite"></div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

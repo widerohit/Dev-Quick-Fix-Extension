@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Dev Quick Fix",
+  "version": "1.0.0",
+  "description": "One-click fixes for common frontend debugging: storage, overlays, hard reload.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "cookies",
+    "browsingData",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icons/icon128.png",
+    "32": "icons/icon128.png",
+    "48": "icons/icon128.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Dev Quick Fix",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon128.png",
+      "32": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "fix-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Fix Page (clear storage, remove overlays, hard reload)"
+    }
+  }
+}
