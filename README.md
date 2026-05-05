@@ -1,6 +1,5 @@
 # Dev Quick Fix
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green.svg)](https://developer.chrome.com/docs/extensions/mv3/)
 
 > Chrome extension for streamlined frontend debugging. One-click fixes for storage, overlays, and cache issues—no configuration needed.
