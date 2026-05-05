@@ -1,6 +1,5 @@
 # Dev Quick Fix
 
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/YOUR_EXTENSION_ID.svg)](https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green.svg)](https://developer.chrome.com/docs/extensions/mv3/)
 
@@ -16,11 +15,6 @@
 🎨 **Minimal UI** — Clean, intuitive interface with real-time feedback  
 
 ## Installation
-
-### For Users (Chrome Web Store)
-Coming soon! Until then, use the developer installation method below.
-
-### For Developers
 
 1. **Clone or download** this repository
 2. Open Chrome and navigate to `chrome://extensions`
@@ -162,17 +156,7 @@ No configuration needed! The extension works out-of-the-box.
 
 ## Development
 
-### Build & Release
 
-This extension is ready to publish:
-
-```bash
-# 1. Zip the folder (excluding .git, node_modules, etc.)
-# 2. Go to Chrome Web Store Developer Dashboard
-# 3. Upload the .zip file
-# 4. Fill in store listing details
-# 5. Submit for review
-```
 
 ### Future Enhancements
 
@@ -208,7 +192,6 @@ MIT License — Use and modify for personal or commercial projects. See [LICENSE
 - 📧 **Bug Reports** — [Create an issue on GitHub](https://github.com/widerohit/Dev-Quick-Fix-Extension/issues)
 - 💬 **Feature Requests** — [Open a discussion](https://github.com/widerohit/Dev-Quick-Fix-Extension/discussions)
 - 🔗 **GitHub** — [View on GitHub](https://github.com/widerohit/Dev-Quick-Fix-Extension)
-- 🔗 **Chrome Web Store** — Leave a review & rating
 
 ## Changelog
 
@@ -226,6 +209,6 @@ MIT License — Use and modify for personal or commercial projects. See [LICENSE
 
 **Made with ❤️ for frontend developers everywhere**
 
-[Chrome Web Store](#) · [GitHub](https://github.com/widerohit/Dev-Quick-Fix-Extension) · [Report Bug](https://github.com/widerohit/Dev-Quick-Fix-Extension/issues)
+[GitHub](https://github.com/widerohit/Dev-Quick-Fix-Extension) · [Report Bug](https://github.com/widerohit/Dev-Quick-Fix-Extension/issues)
 
 </div>
