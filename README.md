@@ -185,7 +185,7 @@ Found a bug? Have a feature idea?
 
 ## License
 
-MIT License — Use and modify for personal or commercial projects. See [LICENSE](LICENSE) file for details.
+Use and modify as you like for personal or commercial projects.
 
 ## Support
 
