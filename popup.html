@@ -6,142 +6,513 @@
     <title>Dev Quick Fix</title>
     <style>
       :root {
-        --bg: #1e1e1e;
-        --surface: #252526;
-        --border: #3c3c3c;
-        --text: #cccccc;
-        --text-dim: #858585;
-        --accent: #3794ff;
-        --accent-hover: #4aa3ff;
-        --danger: #f48771;
-        --success: #89d185;
+        color-scheme: dark;
+        --bg: #101216;
+        --panel: #171a20;
+        --panel-soft: #1f232b;
+        --border: #2d3340;
+        --border-strong: #3d4656;
+        --text: #f2f5f8;
+        --muted: #9aa5b4;
+        --muted-soft: #6f7a89;
+        --blue: #52a8ff;
+        --blue-strong: #2f8df0;
+        --green: #4fc081;
+        --red: #ff7b72;
+        --orange: #f5b85a;
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html,
       body {
         margin: 0;
-        min-width: 220px;
-        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      }
+
+      body {
+        width: 332px;
+        min-height: 420px;
+        font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
         font-size: 13px;
+        line-height: 1.4;
         color: var(--text);
         background: var(--bg);
       }
 
-      header {
-        padding: 10px 12px 8px;
-        border-bottom: 1px solid var(--border);
-        background: var(--surface);
+      button {
+        font: inherit;
+      }
+
+      .shell {
+        min-height: 420px;
+        padding: 14px;
+        background:
+          radial-gradient(circle at 18% -12%, rgba(82, 168, 255, 0.2), transparent 34%),
+          linear-gradient(180deg, #171b23 0%, #101216 52%);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 2px 0 14px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #151922;
+        box-shadow: none;
+        color: var(--muted);
+      }
+
+      .brand-mark svg {
+        width: 21px;
+        height: 21px;
+      }
+
+      .brand-copy {
+        min-width: 0;
       }
 
       h1 {
         margin: 0;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0;
       }
 
-      .sub {
-        margin-top: 2px;
+      .subtitle {
+        margin-top: 1px;
+        color: var(--muted);
         font-size: 11px;
-        color: var(--text-dim);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      main {
-        padding: 10px 12px 12px;
+      .primary-action {
+        width: 100%;
+        min-height: 70px;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 13px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        cursor: pointer;
+        background: rgba(31, 35, 43, 0.94);
+        box-shadow: none;
+        text-align: left;
+        transition:
+          transform 120ms ease,
+          border-color 120ms ease,
+          background 120ms ease;
+      }
+
+      .primary-action:hover:not(:disabled) {
+        background: #252a34;
+        border-color: var(--border-strong);
+        transform: translateY(-1px);
+      }
+
+      .primary-action:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      .primary-action .action-icon {
+        background: #151922;
+        border-color: rgba(255, 255, 255, 0.08);
+        color: var(--blue);
+      }
+
+      .primary-copy {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .primary-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .primary-meta {
+        display: block;
+        margin-top: 2px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 11px;
+      }
+
+      .section-title {
+        margin: 15px 0 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .action-list {
+        display: grid;
         gap: 8px;
       }
 
-      button {
+      .action {
         width: 100%;
-        padding: 8px 10px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 10px;
         border: 1px solid var(--border);
-        border-radius: 4px;
-        background: var(--surface);
+        border-radius: 8px;
+        background: rgba(31, 35, 43, 0.94);
         color: var(--text);
-        font-size: 12px;
-        font-weight: 500;
         cursor: pointer;
-        text-align: center;
-        transition: background 0.12s, border-color 0.12s;
+        text-align: left;
+        transition:
+          background 120ms ease,
+          border-color 120ms ease,
+          transform 120ms ease;
       }
 
-      button:hover:not(:disabled) {
-        background: #2d2d30;
-        border-color: #505050;
+      .action:hover:not(:disabled) {
+        background: #252a34;
+        border-color: var(--border-strong);
+        transform: translateY(-1px);
       }
 
-      button:active:not(:disabled) {
-        background: #333;
+      .action:active:not(:disabled) {
+        transform: translateY(0);
       }
 
-      button.primary {
-        border-color: var(--accent);
-        background: rgba(55, 148, 255, 0.12);
-        color: var(--accent);
+      .action-icon {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        flex: 0 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 7px;
+        background: #151922;
+        color: var(--blue);
       }
 
-      button.primary:hover:not(:disabled) {
-        background: rgba(55, 148, 255, 0.22);
-        border-color: var(--accent-hover);
+      .action-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 2;
       }
 
-      button.danger-outline {
-        border-color: rgba(244, 135, 113, 0.45);
-        color: var(--danger);
+      .danger .action-icon {
+        color: var(--red);
       }
 
-      button:disabled {
-        opacity: 0.45;
-        cursor: not-allowed;
+      .warning .action-icon {
+        color: var(--orange);
+      }
+
+      .success .action-icon {
+        color: var(--green);
+      }
+
+      .action-copy {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .action-label {
+        display: block;
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .action-meta {
+        display: block;
+        margin-top: 1px;
+        color: var(--muted);
+        font-size: 11px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .status-row {
+        min-height: 40px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(16, 18, 22, 0.84);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        flex: 0 0 auto;
+        margin-top: 5px;
+        border-radius: 50%;
+        background: var(--muted-soft);
+        box-shadow: 0 0 0 3px rgba(111, 122, 137, 0.12);
       }
 
       #status {
-        min-height: 18px;
-        margin-top: 4px;
+        min-width: 0;
+        color: var(--muted);
         font-size: 11px;
-        line-height: 1.35;
-        word-break: break-word;
+        overflow-wrap: anywhere;
       }
 
-      #status.ok {
-        color: var(--success);
+      .status-row.ok {
+        border-color: rgba(79, 192, 129, 0.36);
       }
 
-      #status.err {
-        color: var(--danger);
+      .status-row.ok .status-dot {
+        background: var(--green);
+        box-shadow: 0 0 0 3px rgba(79, 192, 129, 0.14);
       }
 
-      #status.muted {
-        color: var(--text-dim);
+      .status-row.ok #status {
+        color: #a6e3bd;
       }
 
-      .shortcut {
+      .status-row.err {
+        border-color: rgba(255, 123, 114, 0.38);
+      }
+
+      .status-row.err .status-dot {
+        background: var(--red);
+        box-shadow: 0 0 0 3px rgba(255, 123, 114, 0.14);
+      }
+
+      .status-row.err #status {
+        color: #ffb4ae;
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 10px;
+        color: var(--muted-soft);
         font-size: 10px;
-        color: var(--text-dim);
-        margin-top: 2px;
+      }
+
+      kbd {
+        display: inline-flex;
+        align-items: center;
+        min-height: 18px;
+        padding: 1px 6px;
+        border: 1px solid var(--border);
+        border-bottom-color: #1d222b;
+        border-radius: 5px;
+        background: #151922;
+        color: var(--muted);
+        font-family: inherit;
+        font-size: 10px;
+        font-weight: 650;
+        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+      }
+
+      .shortcut-section {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px;
+        margin-top: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(31, 35, 43, 0.94);
+      }
+
+      .shortcut-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .shortcut-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 4px;
+      }
+
+      .shortcut-desc {
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.3;
+      }
+
+      .shortcut-keys {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+
+      .shortcut-keys kbd {
+        background: #151922;
+        border-color: var(--border);
+        color: var(--muted);
+        padding: 2px 8px;
+        font-weight: 700;
+      }
+
+      button:focus-visible {
+        outline: 2px solid rgba(82, 168, 255, 0.72);
+        outline-offset: 2px;
+      }
+
+      button:disabled {
+        cursor: progress;
+        opacity: 0.64;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          transition-duration: 1ms !important;
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Dev Quick Fix</h1>
-      <div class="sub">Frontend debugging utilities</div>
-    </header>
-    <main>
-      <button type="button" id="btn-clear" class="danger-outline">
-        Clear All Storage
-      </button>
-      <button type="button" id="btn-overlays">Remove Overlays</button>
-      <button type="button" id="btn-reload">Hard Reload</button>
-      <button type="button" id="btn-fix" class="primary">Fix Page</button>
-      <p class="shortcut">Shortcut: Fix Page (Ctrl+Shift+Y / ⌘⇧Y)</p>
-      <div id="status" class="muted" aria-live="polite"></div>
-    </main>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M13 2 4 14h7l-1 8 10-13h-7l0-7Z" />
+          </svg>
+        </div>
+        <div class="brand-copy">
+          <h1>Dev Quick Fix</h1>
+          <div class="subtitle">Frontend debugging utilities</div>
+        </div>
+      </header>
+
+      <main>
+        <button
+          type="button"
+          id="btn-fix"
+          class="primary-action"
+          data-ready-label="Fix Page"
+          data-busy-label="Applying Fix"
+          aria-describedby="fix-description"
+        >
+          <span class="action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M13 2 4 14h7l-1 8 10-13h-7l0-7Z" />
+            </svg>
+          </span>
+          <span class="primary-copy">
+            <span class="primary-label">Fix Page</span>
+            <span class="primary-meta" id="fix-description">
+              Clear storage, remove overlays, hard reload
+            </span>
+          </span>
+        </button>
+
+        <div class="section-title">Single Actions</div>
+
+        <div class="action-list">
+          <button
+            type="button"
+            id="btn-clear"
+            class="action danger"
+            data-ready-label="Clear All Storage"
+            data-busy-label="Clearing Storage"
+          >
+            <span class="action-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 6h18" />
+                <path d="M8 6V4h8v2" />
+                <path d="m19 6-1 14H6L5 6" />
+                <path d="M10 11v5" />
+                <path d="M14 11v5" />
+              </svg>
+            </span>
+            <span class="action-copy">
+              <span class="action-label">Clear All Storage</span>
+              <span class="action-meta">Origin storage, cookies, cache</span>
+            </span>
+          </button>
+
+          <button
+            type="button"
+            id="btn-overlays"
+            class="action warning"
+            data-ready-label="Remove Overlays"
+            data-busy-label="Removing Overlays"
+          >
+            <span class="action-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="4" y="5" width="16" height="14" rx="2" />
+                <path d="m8 9 8 6" />
+                <path d="m16 9-8 6" />
+              </svg>
+            </span>
+            <span class="action-copy">
+              <span class="action-label">Remove Overlays</span>
+              <span class="action-meta">Strip fixed blockers, restore scroll</span>
+            </span>
+          </button>
+
+          <button
+            type="button"
+            id="btn-reload"
+            class="action success"
+            data-ready-label="Hard Reload"
+            data-busy-label="Reloading"
+          >
+            <span class="action-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 12a9 9 0 1 1-3-6.7" />
+                <path d="M21 3v6h-6" />
+              </svg>
+            </span>
+            <span class="action-copy">
+              <span class="action-label">Hard Reload</span>
+              <span class="action-meta">Reload the active tab bypassing cache</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="shortcut-section">
+          <div class="shortcut-info">
+            <span class="shortcut-label">Keyboard Shortcut</span>
+            <span class="shortcut-desc">Instantly fix the page with one key combination</span>
+          </div>
+          <div class="shortcut-keys" id="shortcut-keys">
+            <kbd id="shortcut-ctrl" title="Control">Ctrl</kbd>
+            <span style="color: var(--muted-soft); font-size: 10px;">+</span>
+            <kbd title="Shift">Shift</kbd>
+            <span style="color: var(--muted-soft); font-size: 10px;">+</span>
+            <kbd title="Y Key" style="min-width: 24px; justify-content: center;">Y</kbd>
+          </div>
+        </div>
+        
+      </main>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
